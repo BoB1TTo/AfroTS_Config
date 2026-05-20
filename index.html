@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AfroTech Suite</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background:
+          radial-gradient(circle at top, rgba(45, 106, 159, 0.12), transparent 38%),
+          linear-gradient(180deg, #f6f8fb 0%, #edf2f7 100%);
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+      }
+
+      #root {
+        min-height: 100vh;
+      }
+
+      #startup-screen {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        z-index: 9999;
+      }
+
+      .startup-card {
+        width: min(720px, 100%);
+        background: linear-gradient(160deg, #ffffff 0%, #f8fbfe 100%);
+        border: 1px solid rgba(226, 230, 234, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(17, 24, 39, 0.08);
+        padding: 28px;
+      }
+
+      .startup-eyebrow {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        color: #6c7a89;
+        margin-bottom: 10px;
+      }
+
+      .startup-title {
+        font-size: 30px;
+        line-height: 1.1;
+        font-weight: 800;
+        color: #1a3c5e;
+        margin-bottom: 10px;
+      }
+
+      .startup-subtitle {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #6c7a89;
+        max-width: 66ch;
+        margin-bottom: 22px;
+      }
+
+      .startup-steps {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .startup-step {
+        border: 1px solid #e2e6ea;
+        border-radius: 14px;
+        padding: 12px 14px;
+        font-size: 13px;
+        color: #1a2332;
+        background: #ffffff;
+      }
+
+      .startup-step-active {
+        border-color: #1a3c5e;
+        background: #eef4fb;
+        font-weight: 700;
+      }
+
+      .startup-note {
+        font-size: 12px;
+        line-height: 1.6;
+        color: #6c7a89;
+      }
+
+      body.startup-done #startup-screen {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+
+      @media (max-width: 700px) {
+        .startup-steps {
+          grid-template-columns: 1fr;
+        }
+
+        .startup-title {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="startup-screen" aria-live="polite">
+      <div class="startup-card">
+        <div class="startup-eyebrow">AfroTech Suite</div>
+        <div class="startup-title">Workspace is warming up</div>
+        <div class="startup-subtitle">
+          We are checking launcher modules, preparing the suite shell, and loading the client report preview before the app takes over.
+        </div>
+        <div class="startup-steps" aria-label="Background tasks">
+          <div class="startup-step startup-step-active">Checking launcher modules</div>
+          <div class="startup-step">Preparing suite shells</div>
+          <div class="startup-step">Loading client report preview</div>
+          <div class="startup-step">Syncing UI theme and layout</div>
+        </div>
+        <div class="startup-note">
+          This screen only appears while the browser bundle is loading.
+        </div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
